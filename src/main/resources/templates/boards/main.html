@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>함사세 메인 페이지</title>
+</head>
+<body>
+
+<!-- 검색 -->
+<!--<form action="getHealthBoardList.do" method="post">-->
+<!--    <table border="1">-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <select name="searchCondition">-->
+<!--                    <c:forEach items="${conditionMap }" var="option">-->
+<!--                        <option value="${option.value }">${option.key }</option>-->
+<!--                    </c:forEach>-->
+<!--                </select>-->
+<!--                <input type="text" name="searchKeyword" />-->
+<!--                <input type="submit" value="검색" />-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--</form>-->
+<table border="1">
+    <caption>게시판</caption>
+    <colgroup>
+        <col style="background-color:#CC9999">
+        <col style="width:150px">
+        <col>
+        <col>
+        <col>
+    </colgroup>
+    <thead>
+    <tr>
+        <th>날짜</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>작성자</th>
+    </tr>
+        <tr th:each="board : ${boards}">
+            <td>${board.}</td>
+            <td>${board.writer }</td>
+            <td>${board.regDate }</td>
+            <td>${board.liky }</td>
+        </tr>
+    </c:forEach>
+    </thead>
+</table>
+
+
+</body>
+</html>
