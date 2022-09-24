@@ -1,9 +1,8 @@
 package study.springboot.domain.board;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
 
 public class Board {
 
@@ -72,7 +71,7 @@ public class Board {
     }
 
     public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+        return this.localDateTime;
     }
 
     public void setLocalDateTime(LocalDateTime localDateTime) {
@@ -80,7 +79,7 @@ public class Board {
     }
 
     public Range getRange() {
-        return range;
+        return this.range;
     }
 
     public void setRange(Range range) {
@@ -98,5 +97,6 @@ public class Board {
                 ", range=" + range +
                 '}';
     }
+
 }
 

@@ -1,23 +1,29 @@
-package study.springboot;
+package study.springboot.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import study.springboot.domain.member.Member;
-import study.springboot.repository.BoardRepository;
-import study.springboot.repository.MemberRepository;
-import study.springboot.repository.MemoryBoardRepository;
-import study.springboot.repository.MemoryMemberRepository;
+import study.springboot.repository.*;
 import study.springboot.service.board.BoardService;
 import study.springboot.service.board.BoardServiceImpl;
 import study.springboot.service.member.MemberService;
 import study.springboot.service.member.MemberServiceImpl;
 
+import javax.sql.DataSource;
 import java.util.Map;
 
 @Configuration
 public class SpringConfig {
+
+    private final DataSource dataSource;
+
+    @Autowired
+    public SpringConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Bean
     public MemberService memberService(){
@@ -31,12 +37,12 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository(){
-        return new MemoryMemberRepository();
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 
     @Bean
     public BoardRepository boardRepository(){
-        return new MemoryBoardRepository();
+        return new JdbcTemplateBoardRepository(dataSource);
     }
 
 

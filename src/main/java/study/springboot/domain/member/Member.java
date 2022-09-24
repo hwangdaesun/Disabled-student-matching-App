@@ -1,6 +1,6 @@
 package study.springboot.domain.member;
 
-public class Member {
+public class Member{
 
     //학번
     private Integer memberId;

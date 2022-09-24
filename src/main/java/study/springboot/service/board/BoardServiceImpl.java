@@ -3,9 +3,10 @@ package study.springboot.service.board;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import study.springboot.domain.board.Board;
-import study.springboot.domain.member.Member;
+import study.springboot.domain.board.Range;
 import study.springboot.repository.BoardRepository;
 
+import java.sql.ResultSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;

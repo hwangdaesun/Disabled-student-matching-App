@@ -23,8 +23,7 @@ public class MemberController {
     }
 
     @PostMapping(value = "/members/new")
-    public String createMember(MemberForm memberForm){
-        Member member = new Member();
+    public String createMember(MemberForm memberForm, Member member){
         member.setSex(memberForm.getSex());
         member.setMemberPassword(memberForm.getMemberPassword());
         member.setMemberName(memberForm.getMemberName());
@@ -34,15 +33,6 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @PostMapping(value = "/members/login")
-    public String login(){
-
-    }
-
-    @GetMapping(value = "/boards/main")
-    public String main(){
-
-    }
 
 
 }
