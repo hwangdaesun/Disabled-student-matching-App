@@ -8,6 +8,8 @@ public class Board {
 
     // 고유한 아이디(게시판)
     private Integer boardId;
+
+    private Integer memberId;
     private String title;
     private String writer;
     private String content;
@@ -17,8 +19,17 @@ public class Board {
     //공개범위
 
 
-    public Board(Integer boardId, String title, String writer, String content, Range range) {
+    public Integer getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
+    }
+
+    public Board(Integer boardId, Integer memberId, String title, String writer, String content, Range range) {
         this.localDateTime = LocalDateTime.now();
+        this.memberId = memberId;
         this.boardId = boardId;
         this.title = title;
         this.writer = writer;
@@ -28,14 +39,6 @@ public class Board {
 
     public Board(){
 
-    }
-
-    public Integer getId() {
-        return boardId;
-    }
-
-    public void setId(Integer id) {
-        this.boardId = id;
     }
 
     public String getTitle() {
@@ -89,14 +92,14 @@ public class Board {
     @Override
     public String toString() {
         return "Board{" +
-                "id=" + boardId +
+                "boardId=" + boardId +
+                ", memberId=" + memberId +
                 ", title='" + title + '\'' +
                 ", writer='" + writer + '\'' +
                 ", content='" + content + '\'' +
-                ", localDateTime=" + localDateTime.now() + '\'' +
+                ", localDateTime=" + localDateTime +
                 ", range=" + range +
                 '}';
     }
-
 }
 

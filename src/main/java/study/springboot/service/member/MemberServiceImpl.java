@@ -3,7 +3,6 @@ package study.springboot.service.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import study.springboot.domain.member.Member;
 import study.springboot.repository.MemberRepository;
-import study.springboot.repository.MemoryMemberRepository;
 
 import java.util.List;
 import java.util.NoSuchElementException;

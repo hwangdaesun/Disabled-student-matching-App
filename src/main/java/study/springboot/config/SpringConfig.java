@@ -18,12 +18,8 @@ import java.util.Map;
 @Configuration
 public class SpringConfig {
 
-    private final DataSource dataSource;
-
     @Autowired
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+    private DataSource dataSource;
 
     @Bean
     public MemberService memberService(){

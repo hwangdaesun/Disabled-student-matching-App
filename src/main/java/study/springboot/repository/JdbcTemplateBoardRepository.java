@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import study.springboot.domain.board.Board;
 import study.springboot.domain.board.Range;
+import study.springboot.domain.member.Member;
 
 
 import javax.sql.DataSource;
@@ -34,6 +35,7 @@ public class JdbcTemplateBoardRepository implements BoardRepository {
         return (rs, rowNum) -> {
            Board board = new Board();
            board.setBoardId(rs.getInt("boardId"));
+           board.setMemberId(rs.getInt("memberId"));
            board.setTitle(rs.getString("title"));
            board.setWriter(rs.getString("writer"));
            board.setContent(rs.getString("content"));
@@ -54,12 +56,12 @@ public class JdbcTemplateBoardRepository implements BoardRepository {
 
     @Override
     public void insertBoard(Board board) {
-        jdbcTemplate.update("insert into member(boarId,title,writer,content,localDateTime,rangeM) values(?,?,?,?,?,?)",board.getBoardId(),board.getTitle(),board.getWriter(),board.getContent(),localDateTimeToTimeStamp(board.getLocalDateTime()),board.getRange().toString());
+        jdbcTemplate.update("insert into board(memberId,title,writer,content,localDateTime,rangeM) values(?,?,?,?,?,?)",board.getMemberId(),board.getTitle(),board.getWriter(),board.getContent(),localDateTimeToTimeStamp(board.getLocalDateTime()),board.getRange().toString());
     }
 
     @Override
     public void updateBoard(Board board) {
-        jdbcTemplate.update("update board set title, content, rangeM where memberId=?",board.getBoardId());
+        jdbcTemplate.update("update board set title=?, content=?, rangeM=? where boardId=?",board.getTitle(),board.getContent(),board.getRange().toString(),board.getBoardId());
     }
 
     @Override

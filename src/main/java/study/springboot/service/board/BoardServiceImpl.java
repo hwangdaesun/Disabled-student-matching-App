@@ -39,12 +39,11 @@ public class BoardServiceImpl implements BoardService {
         return boardRepository.getBoard(boardId);
     }
 
-    @Override
+
     public List<Board> getNormalBoards() {
         return getBoardList().stream().filter(board -> board.getRange() == ONLY_NORMAL).collect(Collectors.toList());
     }
 
-    @Override
     public List<Board> getUnNormalBoards() {
         return getBoardList().stream().filter(board -> board.getRange() == ONLY_UNNORMAL).collect(Collectors.toList());
     }
@@ -56,13 +55,13 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public void updateBoard(Board board) {
-        check(board.getId());
+        check(board.getBoardId());
         boardRepository.updateBoard(board);
     }
 
     @Override
     public void deleteBoard(Board board) {
-        check(board.getId());
+        check(board.getBoardId());
         boardRepository.deleteBoard(board);
 
     }

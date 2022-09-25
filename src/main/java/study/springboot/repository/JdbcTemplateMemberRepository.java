@@ -22,7 +22,7 @@ public class JdbcTemplateMemberRepository implements MemberRepository {
 
     @Override
     public void save(Member member) {
-        jdbcTemplate.update("insert into member(memberId,sex,memberPassword,memberName,memberNumber,grade) values(?,?,?,?,?,?)",member.getMemberId(),member.getSex(),member.getMemberPassword(),member.getMemberName(),member.getMemberNumber(),member.getGrade());
+        jdbcTemplate.update("insert into member(memberId,sex,memberPassword,memberName,memberNumber,grade) values(?,?,?,?,?,?)",member.getMemberId(),member.getSex(),member.getMemberPassword(),member.getMemberName(),member.getMemberNumber(),member.getGrade().toString());
     }
 
     @Override
@@ -51,7 +51,7 @@ public class JdbcTemplateMemberRepository implements MemberRepository {
 
     @Override
     public void update(Member member) {
-        jdbcTemplate.update("update member set sex=? ,memberPassword=? ,memberName=?,memberNumber=?, grade=? where memberId=?",member.getSex(),member.getMemberPassword(),member.getMemberName(),member.getMemberNumber(),member.getGrade(),member.getMemberId());
+        jdbcTemplate.update("update member set sex=? ,memberPassword=? ,memberName=?,memberNumber=?, grade=? where memberId=?",member.getSex(),member.getMemberPassword(),member.getMemberName(),member.getMemberNumber(),member.getGrade().toString(),member.getMemberId());
     }
 
     @Override
