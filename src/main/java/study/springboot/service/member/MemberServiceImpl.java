@@ -60,4 +60,8 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.delete(member);
     }
 
+    public void deleteAll(){
+        memberRepository.deleteAll();
+    }
+
 }

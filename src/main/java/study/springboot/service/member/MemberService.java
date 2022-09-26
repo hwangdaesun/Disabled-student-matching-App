@@ -16,4 +16,6 @@ public interface MemberService {
      void delete(Member member);
 
     Member check(Integer memberId);
+
+    void deleteAll();
 }

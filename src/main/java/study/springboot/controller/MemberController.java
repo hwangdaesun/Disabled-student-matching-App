@@ -19,11 +19,12 @@ public class MemberController {
 
     @GetMapping(value="/members/new")
     public String createForm(){
-        return "members/createMemberForm";
+        return "members/signup";
     }
 
     @PostMapping(value = "/members/new")
     public String createMember(MemberForm memberForm, Member member){
+        member.setMemberId(memberForm.getMemberId());
         member.setSex(memberForm.getSex());
         member.setMemberPassword(memberForm.getMemberPassword());
         member.setMemberName(memberForm.getMemberName());
@@ -33,6 +34,20 @@ public class MemberController {
         return "redirect:/";
     }
 
+    @GetMapping(value="/login")
+    public String login(){
+        return "login";
+    }
+
+    @GetMapping(value = "/error")
+    public String error(){
+        return "error";
+    }
+
+    @GetMapping(value = "/logout")
+    public String logout(){
+        return "/";
+    }
 
 
 }
