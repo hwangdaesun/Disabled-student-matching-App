@@ -1,6 +1,7 @@
 package study.springboot.service.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import study.springboot.domain.member.Member;
 import study.springboot.repository.MemberRepository;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+@Service
 public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;

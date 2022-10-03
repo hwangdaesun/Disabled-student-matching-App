@@ -3,6 +3,7 @@ package study.springboot.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 import study.springboot.domain.board.Board;
 import study.springboot.domain.board.Range;
 import study.springboot.domain.member.Member;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-
+@Repository
 public class JdbcTemplateBoardRepository implements BoardRepository {
 
     private final JdbcTemplate jdbcTemplate;

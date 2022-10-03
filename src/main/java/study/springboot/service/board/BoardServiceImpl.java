@@ -2,6 +2,7 @@ package study.springboot.service.board;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import study.springboot.domain.board.Board;
 import study.springboot.domain.board.Range;
 import study.springboot.repository.BoardRepository;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 import static study.springboot.domain.board.Range.ONLY_NORMAL;
 import static study.springboot.domain.board.Range.ONLY_UNNORMAL;
 
+@Service
 public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository;

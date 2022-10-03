@@ -36,12 +36,12 @@ public class MemberController {
 
     @GetMapping(value="/login")
     public String login(){
-        return "login";
+        return "members/login";
     }
 
-    @GetMapping(value = "/error")
-    public String error(){
-        return "error";
+    @PostMapping(value="/login")
+    public String loginMember(MemberForm memberForm){
+        return "members/login";
     }
 
     @GetMapping(value = "/logout")
