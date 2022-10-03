@@ -35,7 +35,6 @@ public class MemberServiceImpl implements MemberService {
     }
 
     // 회원 존재 확인
-
     public Member check(Integer memberId) throws NoSuchElementException {
         return memberRepository.findById(memberId).orElseThrow();
     }

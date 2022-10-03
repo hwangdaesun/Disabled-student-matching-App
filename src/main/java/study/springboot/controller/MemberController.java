@@ -34,20 +34,5 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping(value="/login")
-    public String login(){
-        return "members/login";
-    }
-
-    @PostMapping(value="/login")
-    public String loginMember(MemberForm memberForm){
-        return "members/login";
-    }
-
-    @GetMapping(value = "/logout")
-    public String logout(){
-        return "/";
-    }
-
 
 }

@@ -33,6 +33,11 @@ public class JdbcTemplateMemberRepository implements MemberRepository {
         return list.stream().findAny();
     }
 
+    @Override
+    public Optional<Member> findByLoginId(Integer memberId) {
+        return findAll().stream().filter(m -> m.getMemberId().equals(memberId)).findFirst();
+    }
+
     private RowMapper<Member> memberRowMapper() {
         return (rs, rowNum) -> {
                 Member member = new Member();

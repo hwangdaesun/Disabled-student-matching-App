@@ -8,9 +8,13 @@ import java.util.Optional;
 public interface MemberRepository {
     void save(Member member);
     Optional<Member> findById(Integer memberId);
+
+    Optional<Member> findByLoginId(Integer memberId);
     List<Member> findAll();
     void update(Member member);
     void delete(Member member);
 
     void deleteAll();
+
+
 }
