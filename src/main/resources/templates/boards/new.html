@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>글 작성</title>
+</head>
+<body>
+
+<form action="/boards/new" method="post">
+  <fieldset>
+    <ul>
+      <li><label>제목<input type="text" id="title" name = "title"></label></li>
+      <li><label>작성자<input type="text" id="writer" name="writer" th:value="${member.memberName}" readonly></label></li>
+      <li><label>내용<textarea id="content" name="content" rows="4" cols="50"></textarea></label></li>
+      <li><label>작성일<input type='datetime-local' name='localDateTime'/></label></li>
+      <li><label>공개범위<input type='radio' name='range' value='ALL'  checked="checked" />모두에게 공개<input type='radio' name='range' value='ONLY_UNNORMAL' />장애학우들에게만 공개</label></li>
+    </ul>
+    <button type="submit">글 작성</button>
+  </fieldset>
+  </fieldset>
+</form>
+
+<a th:href="@{/boards/list}">게시판으로</a>
+
+<script>
+  document.getElementById('localDateTime').value= new Date().toISOString().slice(0, 16);
+</script>
+</body>
+</html>

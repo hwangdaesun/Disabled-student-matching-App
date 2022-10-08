@@ -11,6 +11,8 @@
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
+
+<a th:href="@{/boards/new}">글 작성</a>
 <!-- 검색 -->
 <!--<form action="getHealthBoardList.do" method="post">-->
 <!--    <table border="1">-->
@@ -38,19 +40,20 @@
     </colgroup>
     <thead>
     <tr>
-        <th>날짜</th>
         <th>제목</th>
         <th>내용</th>
         <th>작성자</th>
+        <th>날짜</th>
     </tr>
-        <tr th:each="board : ${boards}">
-            <td>${board.}</td>
-            <td>${board.writer }</td>
-            <td>${board.regDate }</td>
-            <td>${board.liky }</td>
-        </tr>
-    </c:forEach>
     </thead>
+    <tbody>
+    <tr th:each="board : ${boards}">
+        <td th:text="${board.title}"></td>
+        <td th:text="${board.content}"></td>
+        <td th:text="${board.writer}"></td>
+        <td th:text="${board.localDateTime}"></td>
+    </tr>
+    </tbody>
 </table>
 
 

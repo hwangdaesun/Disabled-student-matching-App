@@ -3,8 +3,10 @@ package study.springboot.service.board;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import study.springboot.controller.board.BoardForm;
 import study.springboot.domain.board.Board;
 import study.springboot.domain.board.Range;
+import study.springboot.domain.member.Member;
 import study.springboot.repository.BoardRepository;
 
 import java.sql.ResultSet;
@@ -51,7 +53,14 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void insertBoard(Board board) {
+    public void insertBoard(BoardForm boardForm, Member loginMember) {
+        Board board = new Board();
+        board.setMemberId(loginMember.getMemberId());
+        board.setTitle(boardForm.getTitle());
+        board.setWriter(boardForm.getWriter());
+        board.setRange(boardForm.getRange());
+        board.setLocalDateTime(boardForm.getLocalDateTime());
+        board.setContent(boardForm.getContent());;
         boardRepository.insertBoard(board);
     }
 

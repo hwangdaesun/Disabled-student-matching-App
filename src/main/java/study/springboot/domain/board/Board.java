@@ -1,5 +1,7 @@
 package study.springboot.domain.board;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -13,6 +15,8 @@ public class Board {
     private String title;
     private String writer;
     private String content;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime localDateTime;
 
     private Range range;

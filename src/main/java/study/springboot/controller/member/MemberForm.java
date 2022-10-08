@@ -1,4 +1,4 @@
-package study.springboot.controller;
+package study.springboot.controller.member;
 
 import study.springboot.domain.member.Grade;
 

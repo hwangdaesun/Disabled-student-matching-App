@@ -1,10 +1,11 @@
-package study.springboot.controller;
+package study.springboot.controller.member;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import study.springboot.domain.member.Member;
 import study.springboot.service.web.LoginService;
 
@@ -26,7 +27,7 @@ public class LoginController {
     }
 
     @PostMapping(value="/login")
-    public String loginMember(@ModelAttribute LoginForm loginForm, HttpServletRequest request, Model model){
+    public String loginMember(@ModelAttribute LoginForm loginForm, HttpServletRequest request){
         Member loginMember = loginService.login(loginForm.getLoginId(), loginForm.getLoginPassword());
 
         if(loginMember == null){
@@ -37,9 +38,7 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMember);
 
-        model.addAttribute("member",loginMember);
-
-        return "boards/main";
+        return "redirect:/boards/list";
     }
 
     @PostMapping(value = "/logout")
