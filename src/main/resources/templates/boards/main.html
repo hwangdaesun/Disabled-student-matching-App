@@ -13,22 +13,7 @@
 </form>
 
 <a th:href="@{/boards/new}">글 작성</a>
-<!-- 검색 -->
-<!--<form action="getHealthBoardList.do" method="post">-->
-<!--    <table border="1">-->
-<!--        <tr>-->
-<!--            <td>-->
-<!--                <select name="searchCondition">-->
-<!--                    <c:forEach items="${conditionMap }" var="option">-->
-<!--                        <option value="${option.value }">${option.key }</option>-->
-<!--                    </c:forEach>-->
-<!--                </select>-->
-<!--                <input type="text" name="searchKeyword" />-->
-<!--                <input type="submit" value="검색" />-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </table>-->
-<!--</form>-->
+
 <table border="1">
     <caption>게시판</caption>
     <colgroup>
@@ -48,7 +33,7 @@
     </thead>
     <tbody>
     <tr th:each="board : ${boards}">
-        <td th:text="${board.title}"></td>
+        <td><a th:href="@{'/boards/detail/' + ${board.boardId}}" th:text="${board.title}"></a></td>
         <td th:text="${board.content}"></td>
         <td th:text="${board.writer}"></td>
         <td th:text="${board.localDateTime}"></td>

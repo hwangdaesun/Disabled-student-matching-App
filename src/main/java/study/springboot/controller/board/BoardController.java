@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/boards")
@@ -47,6 +48,13 @@ public class BoardController {
         return "redirect:/boards/list";
     }
 
+    @GetMapping("/detail/{no}")
+    // @PathVariable 공부
+    public String detailBoard(@PathVariable("no") Integer boardId,Model model){
+        Board board = boardService.getBoard(boardId).get();
+        model.addAttribute("board",board);
+        return "boards/detail";
+    }
 
 
 
