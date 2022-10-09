@@ -11,6 +11,8 @@ public interface BoardRepository {
 
     public List<Board> getBoardList();
 
+    public List<Board> findByTitleContaining(String keyword);
+
     public void insertBoard(Board board);
 
     public void updateBoard(Board board);
@@ -18,6 +20,8 @@ public interface BoardRepository {
     public void deleteBoard(Board board);
 
     public void deleteAllBoard();
+
+
 }
 
 

@@ -56,6 +56,12 @@ public class JdbcTemplateBoardRepository implements BoardRepository {
     }
 
     @Override
+    public List<Board> findByTitleContaining(String keyword) {
+        List<Board> list = jdbcTemplate.query("select * from board where title like '%테스트%'", BoardRowMapper());
+        return list;
+    }
+
+    @Override
     public void insertBoard(Board board) {
         jdbcTemplate.update("insert into board(memberId,title,writer,content,localDateTime,rangeM) values(?,?,?,?,?,?)",board.getMemberId(),board.getTitle(),board.getWriter(),board.getContent(),localDateTimeToTimeStamp(board.getLocalDateTime()),board.getRange().toString());
     }

@@ -66,9 +66,9 @@ class BoardServiceImplTest {
         board2.setLocalDateTime(LocalDateTime.now());
         board2.setRange(Range.ONLY_UNNORMAL);
 
-        boardService.insertBoard(board);
-        boardService.insertBoard(board1);
-        boardService.insertBoard(board2);
+//        boardService.insertBoard(board);
+//        boardService.insertBoard(board1);
+//        boardService.insertBoard(board2);
         List<Board> boardList = boardService.getBoardList();
 
         Assertions.assertThat(boardList.size()).isEqualTo(3);
@@ -95,8 +95,8 @@ class BoardServiceImplTest {
         board1.setLocalDateTime(LocalDateTime.now());
         board1.setRange(Range.ONLY_NORMAL);
 
-        boardService.insertBoard(board);
-        boardService.insertBoard(board1);
+       // boardService.insertBoard(board);
+     //   boardService.insertBoard(board1);
 
         List<Board> normalBoards = boardService.getNormalBoards();
 
@@ -123,8 +123,8 @@ class BoardServiceImplTest {
         board1.setLocalDateTime(LocalDateTime.now());
         board1.setRange(Range.ONLY_UNNORMAL);
 
-        boardService.insertBoard(board);
-        boardService.insertBoard(board1);
+        //boardService.insertBoard(board);
+     ///   boardService.insertBoard(board1);
 
 
         List<Board> unNormalBoards = boardService.getUnNormalBoards();
@@ -143,7 +143,7 @@ class BoardServiceImplTest {
         board.setLocalDateTime(LocalDateTime.now());
         board.setRange(Range.ALL);
 
-        boardService.insertBoard(board);
+   //     boardService.insertBoard(board);
 
         board.setTitle("제목 바꿈");
         boardService.updateBoard(board);
@@ -164,7 +164,7 @@ class BoardServiceImplTest {
         board.setLocalDateTime(LocalDateTime.now());
         board.setRange(Range.ALL);
 
-        boardService.insertBoard(board);
+ //       boardService.insertBoard(board);
 
         boardService.deleteBoard(board);
 

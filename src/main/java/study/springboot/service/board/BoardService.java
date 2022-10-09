@@ -13,6 +13,8 @@ public interface BoardService {
     List<Board> getBoardList();
     Optional<Board> getBoard(Integer boardId);
 
+    List<Board> getBoardContainingTitle(String keyword);
+
     List<Board> getNormalBoards();
 
     List<Board> getUnNormalBoards();

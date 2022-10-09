@@ -43,6 +43,11 @@ public class BoardServiceImpl implements BoardService {
         return boardRepository.getBoard(boardId);
     }
 
+    @Override
+    public List<Board> getBoardContainingTitle(String keyword) {
+        return boardRepository.findByTitleContaining(keyword);
+    }
+
 
     public List<Board> getNormalBoards() {
         return getBoardList().stream().filter(board -> board.getRange() == ONLY_NORMAL).collect(Collectors.toList());

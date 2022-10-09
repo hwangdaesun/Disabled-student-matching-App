@@ -56,6 +56,14 @@ public class BoardController {
         return "boards/detail";
     }
 
+    @GetMapping("/search")
+    public String findByBoardContainingTitle(@RequestParam(value="keyword")String keyword,Model model,@SessionAttribute(SessionConstants.LOGIN_MEMBER)Object loginMember){
+        model.addAttribute("member",loginMember);
+        List<Board> boardContainingTitle = boardService.getBoardContainingTitle(keyword);
+        model.addAttribute("boards",boardContainingTitle);
+        return "boards/main";
+    }
+
 
 
 }
