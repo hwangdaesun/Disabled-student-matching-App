@@ -12,9 +12,9 @@
     <input type="submit" value="Sign Out"/>
 </form>
 
-<a th:href="@{/boards/new}">글 작성</a>
+<a th:href="@{/boards/boardPage}">글 작성</a>
 
-<form action = "/boards/search">
+<form action = "/boards/board">
     <div>
         <label>제목으로 검색<input type="text" name = "keyword" placeholder="검색어를 입력해주세요"></label>
     </div>
@@ -40,7 +40,7 @@
     </thead>
     <tbody>
     <tr th:each="board : ${boards}">
-        <td><a th:href="@{'/boards/detail/' + ${board.boardId}}" th:text="${board.title}"></a></td>
+        <td><a th:href="@{'/boards/' + ${board.boardId}}" th:text="${board.title}"></a></td>
         <td th:text="${board.content}"></td>
         <td th:text="${board.writer}"></td>
         <td th:text="${board.localDateTime}"></td>

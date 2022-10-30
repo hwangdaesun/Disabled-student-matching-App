@@ -17,12 +17,12 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @GetMapping(value="/members/new")
+    @GetMapping(value="/signupPage")
     public String createForm(){
         return "members/signup";
     }
 
-    @PostMapping(value = "/members/new")
+    @PostMapping(value = "/members")
     public String createMember(MemberForm memberForm, Member member){
         member.setMemberId(memberForm.getMemberId());
         member.setSex(memberForm.getSex());

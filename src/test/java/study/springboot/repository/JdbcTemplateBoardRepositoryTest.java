@@ -110,21 +110,21 @@ class JdbcTemplateBoardRepositoryTest {
 
     }
 
-    @Test
-    void deleteBoard() {
-        Board board = new Board();
-        board.setBoardId(1);
-        board.setMemberId(194317);
-        board.setTitle("도움");
-        board.setWriter("익명");
-        board.setContent("도와주실 사람 구합니다.");
-        board.setRange(Range.ONLY_NORMAL);
-        board.setLocalDateTime(LocalDateTime.now());
-        boardRepository.insertBoard(board);
-
-        boardRepository.deleteBoard(board);
-
-        Assertions.assertThat(boardRepository.getBoard(194317).isPresent()).isEqualTo(false);
-    }
+//    @Test
+//    void deleteBoard() {
+//        Board board = new Board();
+//        board.setBoardId(1);
+//        board.setMemberId(194317);
+//        board.setTitle("도움");
+//        board.setWriter("익명");
+//        board.setContent("도와주실 사람 구합니다.");
+//        board.setRange(Range.ONLY_NORMAL);
+//        board.setLocalDateTime(LocalDateTime.now());
+//        boardRepository.insertBoard(board);
+//
+//        boardRepository.deleteBoard(board);
+//
+//        Assertions.assertThat(boardRepository.getBoard(194317).isPresent()).isEqualTo(false);
+//    }
 
 }

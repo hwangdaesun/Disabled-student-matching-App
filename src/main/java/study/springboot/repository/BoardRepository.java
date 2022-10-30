@@ -17,7 +17,7 @@ public interface BoardRepository {
 
     public void updateBoard(Board board);
 
-    public void deleteBoard(Board board);
+    public void deleteBoard(Integer boardId);
 
     public void deleteAllBoard();
 

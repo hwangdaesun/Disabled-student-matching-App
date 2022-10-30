@@ -25,9 +25,7 @@ public class BoardController {
         this.boardService = boardService;
     }
 
-
-
-    @GetMapping("/list")
+    @GetMapping("")
     //전체 게시물
     public String getBoardList(Model model, @SessionAttribute(SessionConstants.LOGIN_MEMBER)Object loginMember){
         List<Board> boardList = boardService.getBoardList();
@@ -36,27 +34,26 @@ public class BoardController {
         return "boards/main";
     }
 
-    @GetMapping("/new")
-    public String newBoard(Model model,@SessionAttribute(SessionConstants.LOGIN_MEMBER)Object loginMember){
+    @GetMapping("/boardPage")
+    public String getBoardForm(Model model,@SessionAttribute(SessionConstants.LOGIN_MEMBER)Object loginMember){
         model.addAttribute("member",loginMember);
-        return "boards/new";
+        return "boards/boardPage";
     }
 
-    @PostMapping("/new")
-    public <loginMember> String writeBoard(BoardForm boardForm, @SessionAttribute(SessionConstants.LOGIN_MEMBER)Object loginMember){
+    @PostMapping("/newBoard")
+    public <loginMember> String writeBoard(@ModelAttribute BoardForm boardForm, @SessionAttribute(SessionConstants.LOGIN_MEMBER)Object loginMember){
         boardService.insertBoard(boardForm,(Member)loginMember);
-        return "redirect:/boards/list";
+        return "redirect:/boards";
     }
 
-    @GetMapping("/detail/{no}")
-    // @PathVariable 공부
-    public String detailBoard(@PathVariable("no") Integer boardId,Model model){
+    @GetMapping("/{no}")
+    public String getDetailBoard(@PathVariable("no") Integer boardId,Model model){
         Board board = boardService.getBoard(boardId).get();
         model.addAttribute("board",board);
         return "boards/detail";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/board")
     public String findByBoardContainingTitle(@RequestParam(value="keyword")String keyword,Model model,@SessionAttribute(SessionConstants.LOGIN_MEMBER)Object loginMember){
         model.addAttribute("member",loginMember);
         List<Board> boardContainingTitle = boardService.getBoardContainingTitle(keyword);
@@ -64,6 +61,19 @@ public class BoardController {
         return "boards/main";
     }
 
+    @GetMapping("/boardPage/{no}")
+    public String getUpdateBoardForm(@PathVariable("no") Integer boardId,Model model,@SessionAttribute(SessionConstants.LOGIN_MEMBER)Object loginMember){
+        Board board = boardService.getBoard(boardId).get();
+        model.addAttribute("member",loginMember);
+        model.addAttribute("board",board);
+        return "boards/update";
+    }
+
+    @PutMapping("/{no}")
+    public String updateBoard(@PathVariable("no") Integer boardId,@ModelAttribute BoardForm boardForm){
+        boardService.updateBoard(boardForm,boardId);
+        return "redirect:" +boardId;
+    }
 
 
 }

@@ -70,15 +70,20 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void updateBoard(Board board) {
-        check(board.getBoardId());
+    public void updateBoard(BoardForm boardForm, Integer boardId) {
+        System.out.println("boardForm = " + boardForm.getTitle());
+        Board board = getBoard(boardId).get();
+        board.setTitle(boardForm.getTitle());
+        board.setContent(boardForm.getContent());
+        board.setLocalDateTime(boardForm.getLocalDateTime());
+        board.setRange(boardForm.getRange());
         boardRepository.updateBoard(board);
     }
 
     @Override
-    public void deleteBoard(Board board) {
-        check(board.getBoardId());
-        boardRepository.deleteBoard(board);
+    public void deleteBoard(Integer boardId) {
+        check(boardId);
+        boardRepository.deleteBoard(boardId);
 
     }
 

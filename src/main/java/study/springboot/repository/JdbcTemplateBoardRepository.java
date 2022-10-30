@@ -72,8 +72,8 @@ public class JdbcTemplateBoardRepository implements BoardRepository {
     }
 
     @Override
-    public void deleteBoard(Board board) {
-        jdbcTemplate.update("delete from board where boardId=?",board.getBoardId());
+    public void deleteBoard(Integer boardId) {
+        jdbcTemplate.update("delete from board where boardId=?",boardId);
     }
 
     @Override

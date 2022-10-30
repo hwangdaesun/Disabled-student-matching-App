@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="/boards/new" method="post">
+<form action="/boards/newBoard" method="post">
   <fieldset>
     <ul>
       <li><label>제목<input type="text" id="title" name = "title"></label></li>
@@ -17,10 +17,9 @@
     </ul>
     <button type="submit">글 작성</button>
   </fieldset>
-  </fieldset>
 </form>
 
-<a th:href="@{/boards/list}">게시판으로</a>
+<a th:href="@{/boards}">게시판으로</a>
 
 <script>
   document.getElementById('localDateTime').value= new Date().toISOString().slice(0, 16);

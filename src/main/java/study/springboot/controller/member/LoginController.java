@@ -21,7 +21,7 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-    @GetMapping(value="/login")
+    @GetMapping(value="/loginPage")
     public String login(){
         return "members/login";
     }
@@ -38,7 +38,7 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMember);
 
-        return "redirect:/boards/list";
+        return "redirect:/boards";
     }
 
     @PostMapping(value = "/logout")

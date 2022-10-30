@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import study.springboot.controller.board.BoardForm;
 import study.springboot.domain.board.Board;
 import study.springboot.domain.board.Range;
+import study.springboot.domain.member.Grade;
+import study.springboot.domain.member.Member;
 import study.springboot.service.board.BoardService;
 
 import java.time.LocalDateTime;
@@ -134,6 +137,13 @@ class BoardServiceImplTest {
 
     @Test
     void updateBoard() {
+        BoardForm boardForm = new BoardForm();
+        boardForm.setTitle("수정");
+        boardForm.setWriter("수정");
+        boardForm.setContent("수정");
+        boardForm.setLocalDateTime(LocalDateTime.now());
+        boardForm.setRange(Range.ALL);
+
         Board board = new Board();
         board.setBoardId(1);
         board.setMemberId(193849);
@@ -143,32 +153,38 @@ class BoardServiceImplTest {
         board.setLocalDateTime(LocalDateTime.now());
         board.setRange(Range.ALL);
 
-   //     boardService.insertBoard(board);
+        Member member = new Member();
+        member.setMemberName("대선");
+        member.setMemberId(193849);
+        member.setMemberPassword("123@");
+        member.setMemberNumber("01032431257");
+        member.setSex(1);
+        member.setGrade(Grade.NORMAL);
 
-        board.setTitle("제목 바꿈");
-        boardService.updateBoard(board);
+        boardService.insertBoard(boardForm,member);
+        boardService.updateBoard(boardForm,1);
 
-        Assertions.assertThat(board.getTitle()).isEqualTo(boardService.getBoard(1).get().getTitle());
+        Assertions.assertThat(boardForm.getTitle()).isEqualTo(boardService.getBoard(1).get().getTitle());
 
-
-    }
-
-    @Test
-    void deleteBoard() {
-        Board board = new Board();
-        board.setBoardId(1);
-        board.setMemberId(193849);
-        board.setTitle("안녕하");
-        board.setWriter("아아");
-        board.setContent("하 제발");
-        board.setLocalDateTime(LocalDateTime.now());
-        board.setRange(Range.ALL);
-
- //       boardService.insertBoard(board);
-
-        boardService.deleteBoard(board);
-
-        assertThrows(NoSuchElementException.class, ()->boardService.check(1));
 
     }
+
+//    @Test
+//    void deleteBoard() {
+//        Board board = new Board();
+//        board.setBoardId(1);
+//        board.setMemberId(193849);
+//        board.setTitle("안녕하");
+//        board.setWriter("아아");
+//        board.setContent("하 제발");
+//        board.setLocalDateTime(LocalDateTime.now());
+//        board.setRange(Range.ALL);
+//
+// //       boardService.insertBoard(board);
+//
+//        boardService.deleteBoard(board);
+//
+//        assertThrows(NoSuchElementException.class, ()->boardService.check(1));
+//
+//    }
 }

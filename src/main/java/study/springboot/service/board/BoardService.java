@@ -18,8 +18,8 @@ public interface BoardService {
     List<Board> getNormalBoards();
 
     List<Board> getUnNormalBoards();
-    void updateBoard(Board board);
-    void deleteBoard(Board board);
+    void updateBoard(BoardForm boardForm,Integer boardId);
+    void deleteBoard(Integer boardId);
 
     void deleteAllBoard();
 
