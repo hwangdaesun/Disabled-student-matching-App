@@ -43,7 +43,7 @@ public class BoardController {
     @PostMapping("/newBoard")
     public <loginMember> String writeBoard(@ModelAttribute BoardForm boardForm, @SessionAttribute(SessionConstants.LOGIN_MEMBER)Object loginMember){
         boardService.insertBoard(boardForm,(Member)loginMember);
-        return "redirect:/boards";
+        return "redirect:";
     }
 
     @GetMapping("/{no}")
@@ -75,5 +75,10 @@ public class BoardController {
         return "redirect:" +boardId;
     }
 
+    @DeleteMapping("/{no}")
+    public String deleteBoard(@PathVariable("no") Integer boardId){
+        boardService.deleteBoard(boardId);
+        return "redirect:";
+    }
 
 }
